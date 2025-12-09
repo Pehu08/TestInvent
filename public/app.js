@@ -171,7 +171,7 @@ function filterProducts() {
     filteredProducts = products.filter(product => {
         const matchesSearch = !searchTerm || 
             product.name.toLowerCase().includes(searchTerm) ||
-            product.description.toLowerCase().includes(searchTerm);
+            (product.description || '').toLowerCase().includes(searchTerm);
         const matchesCategory = !category || product.category === category;
         return matchesSearch && matchesCategory;
     });

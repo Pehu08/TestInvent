@@ -13,6 +13,8 @@ app.use(express.static('public'));
 const db = new sqlite3.Database('./inventory.db', (err) => {
   if (err) {
     console.error('Error opening database:', err);
+    console.error('Failed to initialize database. Please check file permissions and disk space.');
+    process.exit(1);
   } else {
     console.log('Connected to SQLite database');
     initializeDatabase();
